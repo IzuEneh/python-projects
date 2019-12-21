@@ -2,7 +2,7 @@
 # This program copies the entire Music folder and its content into
 # a ZIP whose filename increments.
 
-import zipfile, os 
+import zipfile, os, re
 
 def backupToZip(folder):
     #Backup the entire contents of "folder" into a ZIP file.
@@ -37,6 +37,26 @@ def backupToZip(folder):
     backupZip.close()
     print('Done.\n')
 
-backupToZip('C:\\Users\izuen\Music')
+
+
+
+if __name__ == "__main__":
+
+    foldername = input("Please enter the path of the folder you want to backup: ")
+    if(re.match(r"C:\\\\Users\\izuen\\\w+", foldername)):
+        print('backing up :' + foldername + '\n')
+        backupToZip(foldername)
+    else:
+        foldername = 'C:\\\\Users\\izuen\\' + foldername
+        print('backing up :' + foldername + '\n')
+        backupToZip(foldername)
+
+
+# ideas to improve 
+# - Make gui 
+# - make automatic bash function that listens to music folder and backs up 
+# after N number of additions to folder 
+# - prompts user before backing up 
+    
 
 
